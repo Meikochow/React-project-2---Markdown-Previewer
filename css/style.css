@@ -1,0 +1,100 @@
+body {
+  background-image: url("https://s20.postimg.cc/v7ev7xevh/basic_background_50.png");
+}
+
+header {
+  text-align: center;
+  margin-bottom: -10px;
+}
+
+td, th {
+  border: 1px solid black;
+  padding: 10px;
+}
+
+code {
+  background: #BEBEBE;
+}
+
+#editor, .editorHeader, #preview, .previewHeader {
+  border: 1px solid black;
+  width: 50%;
+  padding: 10px;
+  margin-left: 25%;
+  margin-top: 10px;
+  overflow-wrap: break-word;
+  height: 300px;
+}
+
+.editorHeader {
+  height: auto;
+  padding: 0px;
+  margin-bottom: -30px;
+  text-align: center;
+  border: none;
+}
+
+#preview, .previewHeader {
+  width: 70%;
+  margin-left: 15%;
+  height: auto;
+  background: rgba(236, 249, 236, 0.95);
+}
+
+.previewHeader {
+  height: auto;
+  width: 70%;
+  padding: 0px;
+  margin-bottom: -10px;
+  text-align: center;
+  border: none;
+  background: none;
+}
+
+.fa-free-code-camp {
+  color: #339933;
+}
+
+footer {
+  text-align: center;
+  margin: 10px;
+}
+
+@media screen and (max-width: 400px) {
+  #editor, .editorHeader, #preview, .previewHeader {
+    border: 1px solid black;
+    width: 80%;
+    padding: 10px;
+    margin-left: 5%;
+  }
+
+  .editorHeader {
+    width: 80%;
+    height: auto;
+    padding: 0px;
+    margin-bottom: -30px;
+    text-align: center;
+    border: none;
+  }
+
+  #preview, .previewHeader {
+    width: 90%;
+    margin-left: 1%;
+    height: auto;
+    background: rgba(236, 249, 236, 0.95);
+  }
+
+  .previewHeader {
+    height: auto;
+    width: 90%;
+    padding: 0px;
+    margin-bottom: -10px;
+    text-align: center;
+    border: none;
+    background: none;
+  }
+
+  img {
+    width: 200px;
+  }
+}

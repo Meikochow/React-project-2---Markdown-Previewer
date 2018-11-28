@@ -1,0 +1,104 @@
+const renderer = new marked.Renderer();
+renderer.link = function (href, title, description) {
+  return `<a target="_blank" href="${href}">${description}` + '</a>';
+}
+marked.setOptions({
+  breaks: true,
+});
+class MPreviewer extends React.Component{
+  constructor(props){
+    super(props)
+    this.state={
+      input:initialText,
+    }
+    this.handleChange=this.handleChange.bind(this);
+
+  }
+  handleChange(e){
+    this.setState({
+      input:e.target.value
+    })
+  }
+
+  render(){
+    return(
+    <div>
+    <header><li className="fa fa-free-code-camp fa-2x"></li> <h1 style={{display:"inline"}}>Markdown Previewer</h1></header>
+    <div className='editorHeader'>
+    <h2 >Editor</h2>
+        </div>
+    <Editor onChange={this.handleChange} markdown={this.state.input}/>
+    <div className='previewHeader'>
+    <h2 style={{display:'inline'}}>Previewer</h2>
+        </div>
+    <Preview markdown={this.state.input}/>
+    <footer>Coded by Victor Cojocaru. 2018</footer>
+    </div>
+      
+    )
+  }
+}
+const Editor = (props) => {
+  return (
+    <textarea id='editor'
+      value={props.markdown}
+      onChange={props.onChange}
+      type='text'/>
+    )
+}
+
+const Preview = (props) => {
+  return (
+      <div id='preview' dangerouslySetInnerHTML={{__html: marked(props.markdown, { renderer: renderer })}} />
+    )
+}
+const initialText = `# Header
+
+## sub-header
+### sub-sub-header
+  
+One line code, \`<div></div>\`
+
+\`\`\`
+// Multi-line code:
+
+function life() {
+if(sad){
+play(music.mp3);
+ }
+}
+\`\`\`
+
+**_both_** bold and italic text  
+**bold** text
+_italic_ text
+
+~~Text you don't like~~ crossed text
+
+[Markdown Documentation](https://marked.js.org/#/README.md#marked) Links
+> Block Quotes
+
+Tables
+
+1st column header | 2nd column header | 3rd column header
+------------ | ------------- | ------------- 
+1st column X 2nd row | 2nd column X 2nd row | 3rd column X 2nd row
+1st column X 3rd row | 2nd column X 3rd row | 3rd column X 3rd row
+
+Bullet list
+- 1st level deep
+  - 2nd level deep
+     - 3rd level deep
+        - 4th level deep
+
+Numbered lists in which the numeration occurs even if not repected by the user
+1. 1st Item
+1. 2nd Item
+1. 3rd Item
+-  4th Item
+*  5th Item
+
+Embedded images
+![React Logo w/ Text](https://markdown-here.com/img/icon256.png)
+`
+ReactDOM.render(<MPreviewer/>,app)
